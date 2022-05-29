@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Helvetica', sans-serif;
+    max-width: 100vw;
+}
+
+#home {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+}
+
+#backdrop_container {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    max-width: 100vw;
+    width: 100%;
+    height: 80vh;
+    padding: 90px;
+}
+
+#movie_info {
+    height: 100%;
+    width: 40%;
+    line-height: 1.39;
+}
+
+#Mtitle_ratings {
+    margin: 40px 0;
+}
+
+#ratings {
+    font-size: x-small;
+}
+
+#recommended_movies {
+    width: 100%;
+    height: 1000px;
+    background-image: linear-gradient(to bottom, #000, #01010c);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#recommended_movies>h4 {
+    border-bottom: 1px solid white;
+    font-size: large;
+    margin: 40px;
+    font-weight: 800;
+}
+
+#recommended_movies_container {
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 60px;
+}
+
+#recommended_movies_container>a {
+    width: 200px;
+    height: 300px;
+    margin: auto;
+}
+
+.movie_poster {
+    width: 100%;
+    height: 100%;
+}
+
+.movie_poster>img {
+    height: 100%;
+    width: 100%;
+}

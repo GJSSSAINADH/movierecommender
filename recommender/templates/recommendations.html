@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <title>{{movie_name}}</title>
+        <link rel="stylesheet" href="">
+        <style>
+            #backdrop_container{
+                background-image: radial-gradient(circle at top right, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 1) 65%), url({{backdrop}});
+            }
+        </style>
+        
+        <link rel="stylesheet" href="{% static 'style1.css' %}">
+    </head>
+    <body>
+        <a id="home" href="{% url 'index'%}">Home</a>
+        <div id="backdrop_container">
+            <div id="movie_info">
+                <div id="Mtitle_ratings">
+                    <h1>{{movie_name}}</h1>
+                    <p id="ratings">{{ratings}} out of 10.0</p>
+                </div>
+                <div id="overview">
+                    <p>{{overview}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="recommended_movies">
+            <h4>Related Movies</h4>
+            <div id="recommended_movies_container">
+                {% for movie in recommended_movies %}
+                    <a class="movie_card" href="/getrecommendations/{{movie.1}}">
+                        <div class="movie_poster">
+                            <img src="{{movie.0}}">
+                        </div>
+                    </a>
+                {% endfor %}
+                </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Movie Recommender</title>
+        <link rel=stylesheet href="{% static 'style.css'%}">
+        <style>
+            body{
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 1) 100%), url({% static 'background.jpg' %});
+            }
+        </style>
+        <script>
+            function filterResults() {
+                var input, filter, ul, li, a, i, txtValue,results;
+                input = document.getElementById("search");
+                results = document.getElementById("results");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    txtValue = li[i].textContent || li[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        results.style.display = "";
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+            function fillInput(id_name) {
+                search_bar=document.getElementById("search");
+                hidden_input=document.getElementById("hidden_input");
+                text=document.getElementById(id_name).innerText;
+                search.value=text;
+                hidden_input.value=text;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="card">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" id="search" name="dummy" onkeyup="filterResults()" placeholder="Search for a movie" autocomplete="off">
+                <input type="text" id="hidden_input" name="movie" value="" required>
+                <input type="Submit" id="search_button" value="Search">
+            </form>
+            <div id="results-box">
+                <div id="results">
+                    <ul id="myUL">
+                        {% for li in list%}
+                            <li id="{{li.1}}" onclick="fillInput('{{li.1}}')">
+                                {{li.0}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
